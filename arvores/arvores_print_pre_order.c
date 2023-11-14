@@ -16,15 +16,12 @@ struct TreeNode* createNode(char data) {
     return newNode;
 }
 
-// Função para imprimir a árvore na notação textual
-void printTree(struct TreeNode* root) {
-    if (root == NULL) {
-        printf("<> ");
-    } else {
-        printf("<%c ", root->data);
-        printTree(root->left);
-        printTree(root->right);
-        printf("> ");
+// Função para imprimir os nós em pré-ordem
+void printNodesPreOrder(struct TreeNode* root) {
+    if (root != NULL) {
+        printf("%c ", root->data); // Imprime o nó atual
+        printNodesPreOrder(root->left); // Chama recursivamente para a subárvore esquerda
+        printNodesPreOrder(root->right); // Chama recursivamente para a subárvore direita
     }
 }
 
@@ -38,9 +35,9 @@ int main() {
     root->right->left = createNode('e');
     root->right->right = createNode('f');
 
-    // Imprimindo a árvore na notação textual
-    printf("Notação textual da árvore: ");
-    printTree(root);
+    // Imprimindo os nós em pré-ordem
+    printf("Nós da árvore em pré-ordem: ");
+    printNodesPreOrder(root);
 
     // Liberando a memória alocada para a árvore
     // (Não esqueça de implementar a função de liberação de memória adequada)
